@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title><link rel="stylesheet" href="todoapp.css">
+    <style></style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <h1>Todo list </h1>
+            <input type="text" id="input"> <button id="button1">+</button>
+            <div id="div3">
+                <ol>
+                    <!-- <div id="div4"><li><button id="button2">×</button>Apple</li></div> -->
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script>
+let input=document.getElementById('input');
+let button= document.getElementById('button1');
+input.addEventListener('keydown',function(e){
+    if( e.key ==="Enter"){
+        let data=`<div id="div4"><li><button id="button2" >×</button>${input.value}</li></div>`;
+
+document.querySelector('ol').insertAdjacentHTML("afterbegin",data)
+
+input.value=''
+    }
+    saveToLocalStorage();
+})
+
+button.addEventListener('click',function(){
+let data=`<div id="div4"><li><button id="button2" >×</button>${input.value}</li></div>`;
+
+    document.querySelector('ol').insertAdjacentHTML("afterbegin",data)
+
+    input.value=''
+
+    saveToLocalStorage();
+})
+let button2= document.querySelectorAll('#button2');
+
+let ol =document.querySelector('ol');
+
+ol.addEventListener('click',function(e){
+    // console.log();
+    if(e.target.nodeName === "BUTTON"){
+        let par= e.target.parentElement;
+   
+   par.remove();
+   saveToLocalStorage();
+    }
+  
+})
+    // Save data to local storage
+    function saveToLocalStorage() {
+        const items = [];
+        document.querySelectorAll('ol li').forEach(li => {
+            items.push(li.textContent.slice(1)); // Remove the '×' button text
+        });
+        localStorage.setItem('todoList', JSON.stringify(items));
+    }
+
+    // Load data from local storage
+    function loadFromLocalStorage() {
+        const items = JSON.parse(localStorage.getItem('todoList')) || [];
+        items.forEach(item => {
+            let data = `<div id="div4"><li><button id="button2">×</button>${item}</li></div>`;
+            document.querySelector('ol').insertAdjacentHTML("afterbegin",data);
+        });
+    }
+
+    // Call loadFromLocalStorage on page load
+    window.onload = loadFromLocalStorage;
+
+
+    </script>
+</body>
+</html>

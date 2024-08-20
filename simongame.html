@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+.outer{
+    
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top: 150px;
+    
+}
+.div1{
+width: 100px;
+height: 100px;
+background-color: rgb(128, 0, 255);
+border: 5px solid black;
+border-radius: 20px;
+}
+
+.div2{
+    width: 100px;
+height: 100px;
+background-color: rgb(255, 174, 0);
+border: 5px solid black;
+border-radius: 20px;
+}
+
+.div3{
+    width: 100px;
+height: 100px;
+background-color: rgb(248, 45, 45);
+border: 5px solid black;
+border-radius: 20px;
+
+}
+
+.div4{
+    width: 100px;
+height: 100px;
+background-color: rgb(0, 170, 255);
+border: 5px solid black;
+border-radius: 20px;
+
+}
+
+h1{
+    position:absolute;
+}h3{
+    position:absolute;
+    top: 80px;
+}
+
+.flash{
+    background-color: aliceblue;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Simon Game</h1>
+    <h3>press any key to start</h3>
+
+<div class="outer">
+    <div class="div1  btn" type="button">1</div>
+    <div class="div2 btn" type="button">2</div>
+    <div class="div3  btn" type="button">3</div>
+    <div class="div4 btn" type="button">4</div>
+    
+</div>
+
+<script>
+let gameseq=[];
+let userseq=[];
+let color=["div1","div2","div3","div3"]
+
+let gamestart=false;
+let level=0;
+let h3=document.querySelector('h3');
+let div1=document.querySelector('.div1')
+let div2=document.querySelector('.div2')
+let div4=document.querySelector('.div3')
+let div3=document.querySelector('.div3')
+
+document.addEventListener('keydown',function(){
+    if(gamestart=== false){
+        gamestart=true;
+        console.log('game start');
+        
+    }
+    levelup();
+})
+
+function btnflash(btn){
+    btn.classList.add('flash');
+
+    setTimeout(function(){
+    btn.classList.remove('flash');
+
+    },300)
+}
+
+function levelup(){
+    level++;
+    h3.innerHTML= 'Level  '+level;
+
+    let number=Math.floor(Math.random()*3);
+    let button= color[number];
+    let selectbutton=document.querySelector(`.${button}`)
+gameseq.push(button);
+
+
+btnflash(selectbutton)
+
+}
+
+function btnpress(){
+    let btn =this;
+    btnflash(btn);
+}
+
+let allbuttons=document.querySelectorAll('.btn');
+
+for(btn of allbuttons){
+    btn.addEventListener('click',btnpress)
+}
+
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Abdullah Riaz</h1>
+    <button onclick="hello()" >Get image</button>
+    <script>
+let jdata='{"message":"https:\/\/images.dog.ceo\/breeds\/terrier-silky\/n02097658_950.jpg","status":"success"}';
+
+let jres=JSON.parse(jdata);
+console.log(jres)
+
+function hello(){
+    let body = document.querySelector('body');
+    body.insertAdjacentHTML('beforebegin',`<img src="${jres.message}" alt="">`)
+}
+
+
+    </script>
+</body>
+</html>

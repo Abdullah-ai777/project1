@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0 ;
+}
+#div1{
+    width: 100%;
+    height: 100vh;
+    background-color: #04a8df;
+    display: flex;
+    justify-content: center;
+    
+   
+}
+#div2{
+    width: 344px;
+    height: 500px;
+    background-color: rgb(253, 254, 255);
+    position: relative;
+    top:100px;
+    border-radius:10px ;
+    
+}
+ol{
+    list-style: none;
+}
+#button1{
+    width: 30px;
+    height: 30px;
+font-size: 25px;
+ border: none;
+ border-radius: 50%;
+ background-color: #118102;   
+ color: aliceblue;
+ position: absolute;
+top: 130px;
+right: 40px;
+}
+#input{
+    width: 190px;
+    height: 30px;
+    border: none;
+    border-bottom: 3px solid #000000;
+outline: none;
+text-align: center;
+font-size: 25px;
+position: absolute;
+top: 120px;
+margin-left: 40px;
+}
+#div3{
+    width: 100%;
+    position: absolute;
+    top: 180px;
+    
+}
+h1{
+    text-align: center;
+    position:relative;
+    top: 50px;
+ 
+    background-color: chocolate;
+}
+ol button{
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: crimson;
+    color: aliceblue;
+    font-size: 18px;
+    position: relative;
+    margin-left: 10px;
+}
+li{
+    position: relative;
+    left: 30px;
+    font-size: 18px;
+}
+#div4{
+    display: flex;
+    margin-top: 5px;
+}
